@@ -1,0 +1,32 @@
+class n:
+    def init(self, brand, size, price):
+        self.brand = brand
+        self.size = size
+        self.price = price
+class Store:
+    def init(self):
+        self.stock = []
+    def add_s(self, brand, size, price):
+        s = n(brand, size, price)
+        self.stock.append(s)
+        print("Был добавлен :" + brand + ' ' + str(price) + ' ' + str(size))
+    def display_stock(self):
+        if self.stock == []:
+            print("На складе нету ничего")
+        else:
+            print("Вот кроссы:")
+            for s in self.stock:
+                print(s.brand, s.size, s.price)
+    def buy_s(self, brand, size, budget):
+        for s in self.stock:
+            if s.brand == brand and s.size == size:
+                if(budget >= s.price):
+                    self.stock.remove(s)
+                    print("Ты купил:" + brand + ' ' + str(size))
+                    return
+                else:
+                    print("Мало денег")
+                    return
+        print("Такого бренда нет в наличии")
+store = Store()
+store.add_s('Nike', 27, 20000)
